@@ -6,7 +6,7 @@ import word_list
 # Clear the console dependeng on the OS
 def clear():
  
-    # for windows
+    # For windows
     if os.name == 'nt':
         os.system('cls')
  
@@ -30,7 +30,7 @@ clear()
 print(ascii_art.logo)
 print("{0} ".format("  ".join(word_shown)))
 
-# while the user has lives, keep asking for an input, which should be a alphabetical charater, the match that input to the characters of the chosen word. If the characers match, replace the corresponding blank in "word_hidden" to the character. If there is no match, decrease the number of lives, and print the corresponding ascii art. Then repeat.
+# While the user has lives, keep asking for an input, which should be a alphabetical charater, the match that input to the characters of the chosen word. If the characers match, replace the corresponding blank in "word_hidden" to the character. If there is no match, decrease the number of lives, and print the corresponding ascii art. Then repeat.
 # Additional message, if the chosen letter is or is not in the word, and store and check if the letter was guessed before.
 while life > 0:
     if "_" in word_shown:
@@ -39,7 +39,7 @@ while life > 0:
         while len(choice)!=1 or not choice.isalpha():
             choice = input("Guess a letter: ").lower()
             
-        if word_hidden.count(choice):       #alternate condition: if choice is not in word_hidden:
+        if word_hidden.count(choice):       # Alternate condition: if choice is not in word_hidden:
             if choice in choices:
                 message = f"you've already tried \"{choice}\", it's in the word."
             else:
@@ -65,11 +65,15 @@ while life > 0:
         print("{0} ".format("  ".join(word_shown)))
         
         print(ascii_art.stages[life])
-        print(f"You've guessed \"{choice}\", " + message)
-        print("Life remaining:", life)
+        print("Life remaining:", life, "\n")
+
+        print("Your guesses so far:\n",choices, "\n")
+
+        print(f"You've guessed \"{choice}\", " + message + "\n")
     
     else:
         print("You won!")
         exit()
 
 print("You lose!")
+print("The word was: {0}".format("".join(word_hidden)))
